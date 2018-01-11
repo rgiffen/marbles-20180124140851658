@@ -29,7 +29,7 @@ services:
       repo_url: 'https://github.com/dshuffma-ibm/marbles'
       type: fork
       has_issues: false
-      enable_traceability: true
+      enable_traceability: false
   sample-build:
     service_id: pipeline
     parameters:
