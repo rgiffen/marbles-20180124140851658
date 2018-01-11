@@ -25,7 +25,7 @@ services:
   sample-repo:
     service_id: githubpublic
     parameters:
-      repo_name: '{{toolchain.name}}-{{timestamp}}'
+      repo_name: '{{toolchain.name}}-{{timestamp}}-repo'
       repo_url: 'https://github.com/dshuffma-ibm/marbles'
       type: fork
       has_issues: false
