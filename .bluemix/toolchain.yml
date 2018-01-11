@@ -27,9 +27,9 @@ services:
     parameters:
       repo_name: '{{toolchain.name}}-repo'
       repo_url: 'https://github.com/dshuffma-ibm/marbles'
-      type: fork
+      type: clone
       has_issues: false
-      enable_traceability: false
+      enable_traceability: true
   sample-build:
     service_id: pipeline
     parameters:
