@@ -17,8 +17,6 @@ stages:
     service: ${SAMPLE_REPO}
   triggers:
   - type: commit
-  triggers:
-  - type: stage
   properties:
   - name: CF_APP_NAME
     value: undefined
