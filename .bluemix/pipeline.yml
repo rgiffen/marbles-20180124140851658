@@ -1,15 +1,5 @@
 ---
 stages:
-- name: BUILD
-  inputs:
-  - type: git
-    branch: master
-    service: ${SAMPLE_REPO}
-  triggers:
-  - type: commit
-  jobs:
-  - name: Build
-    type: builder
 - name: DEPLOY
   inputs:
   - type: git
