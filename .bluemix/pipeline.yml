@@ -3,7 +3,7 @@ stages:
 - name: BUILD
   inputs:
   - type: git
-    branch: master
+    branch: v4.0
     service: ${SAMPLE_REPO}
   triggers:
   - type: commit
@@ -35,12 +35,12 @@ stages:
     script: |
       #!/bin/bash
       # Push app
-      if ! cf app $CF_APP; then  
+      if ! cf app $CF_APP; then
         cf push $CF_APP
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
         rollback() {
-          set +e  
+          set +e
           if cf app $OLD_CF_APP; then
             cf logs $CF_APP --recent
             cf delete $CF_APP -f
@@ -59,4 +59,3 @@ stages:
       export APP_URL=http://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')
       # View logs
       #cf logs "${CF_APP}" --recent
-      
