@@ -29,14 +29,16 @@ stages:
       printf "\n --- Listing services for testing ---\n"
       cf services
       #cf services | sed -n 's/.*\(ibm-blockchain-plan-v1-prod\).*/\1/p'
-      printf "\n\nLooking for 1 $SERVICE_INSTANCE_NAME\n"
-      printf "\n\nLooking for 2 ${SERVICE_INSTANCE_NAME}"
-      printf "\n\nLooking for 3 $SERVICE_INSTANCE_NAME2"
-      printf "\n\nLooking for 4 ${SERVICE_INSTANCE_NAME2}"
-      printf "\n\nLooking for 5 $servicename"
-      printf "\n\nLooking for 6 ${servicename}"
-      printf "\n\nLooking for 7 $SERVICE_INSTANCE_NAME3"
-      printf "\n\nLooking for 8 ${SERVICE_INSTANCE_NAME3}"
+      printf "\nLooking for 1 $CF_APP_NAME"
+      printf "\nLooking for 2 ${CF_APP_NAME}"
+      printf "\nLooking for 1 $SERVICE_INSTANCE_NAME"
+      printf "\nLooking for 2 ${SERVICE_INSTANCE_NAME}"
+      printf "\nLooking for 3 $SERVICE_INSTANCE_NAME2"
+      printf "\nLooking for 4 ${SERVICE_INSTANCE_NAME2}"
+      printf "\nLooking for 5 $servicename"
+      printf "\nLooking for 6 ${servicename}"
+      printf "\nLooking for 7 $SERVICE_INSTANCE_NAME3"
+      printf "\nLooking for 8 ${SERVICE_INSTANCE_NAME3}"
       cf services | sed -n 's/.*\(${SERVICE_INSTANCE_NAME}\).*/\1/p'
 
       # Create a service, this is okay to run even if the service already exists, at least as of 01/12/2018
