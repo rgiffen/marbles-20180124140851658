@@ -24,25 +24,21 @@ stages:
       application: ${CF_APP_NAME}
     script: |
       #!/bin/bash
-      # Push app
-      if ! cf app $CF_APP; then
-        cf push $CF_APP
-      else
-        OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
-        rollback() {
-          set +e
-          if cf app $OLD_CF_APP; then
-            cf logs $CF_APP --recent
-            cf delete $CF_APP -f
-            cf rename $OLD_CF_APP $CF_APP
-          fi
-          exit 1
-        }
-        set -e
-        trap rollback ERR
-        cf rename $CF_APP $OLD_CF_APP
-        cf push $CF_APP
-        cf delete $OLD_CF_APP -f
-      fi
-      export CF_APP_NAME="$CF_APP"
-      export APP_URL=http://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')
+
+      # Test Code
+      cf services
+      #cf services | sed -n 's/.*\(ibm-blockchain-plan-v1-prod\).*/\1/p'
+      cf services | sed -n 's/.*\(davids-d2b-test\).*/\1/p'
+
+      # Create a service, this is okay to run even if the service already exists, at least as of 01/12/2018
+      cf create-service cloudantNoSQLDB Lite davids-d2b-test
+
+      # Push app (don't start yet, wait for binding)
+      cf push $CF_APP --no-start
+
+      # Bind app to the blockchain service
+      cf bind-service $CF_APP davids-d2b-test -c "{\"permissions\":\"read-only\"}"
+
+      # Start her up
+      cf start $CF_APP
+      #cf restage $CF_APP - this is not needed if we bind before starting
