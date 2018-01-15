@@ -43,7 +43,7 @@ stages:
       fi
       printf "Using service instance name '${SERVICE_INSTANCE_NAME}'\n"
 
-      # Create a service, this is okay to run even if the service already exists, at least as of 01/12/2018
+      # Create a service, this is okay to run if the service already exists as long as its the same typeof service
       printf "\n --- Creating an instance of the IBM Blockchain Platform service ---\n"
       cf create-service ${IBP_NAME} ${IBP_PLAN} ${SERVICE_INSTANCE_NAME}
 
