@@ -15,10 +15,10 @@ stages:
     value: undefined
     type: text
   - name: SERVICE_INSTANCE_NAME
-    value: '{{SERVICENAME}}'
+    value: '{{SIN}}'
     type: text
   - name: SERVICE_INSTANCE_NAME2
-    value: '{{servicename}}'
+    value: '{{sin}}'
     type: text
   jobs:
   - name: deploy-marbles-app
@@ -36,11 +36,15 @@ stages:
       cf services
       #cf services | sed -n 's/.*\(ibm-blockchain-plan-v1-prod\).*/\1/p'
       echo "Looking for 1 ${CF_APP}"
-      echo "Looking for 2 ${SAMPLE_REPO}"
-      echo "Looking for 3 ${SERVICE_INSTANCE_NAME}"
-      echo "Looking for 4 ${SERVICE_INSTANCE_NAME2}"
-      echo "Looking for 5 ${servicename}"
+      echo "Looking for 2 ${SERVICE_INSTANCE_NAME}"
+      echo "Looking for 3 ${SERVICE_INSTANCE_NAME2}"
       cf services | sed -n 's/.*\(${SERVICE_INSTANCE_NAME}\).*/\1/p'
+
+      if [ "$SERVICE_INSTANCE_NAME" != "" ]; then
+        echo "SERVICE_INSTANCE_NAME was found"
+      else
+        echo "SERVICE_INSTANCE_NAME was NOT found"
+      fi
 
       # Create a service, this is okay to run even if the service already exists, at least as of 01/12/2018
       printf "\n --- Creating an instance of the IBM Blockchain Platform service ---\n"
