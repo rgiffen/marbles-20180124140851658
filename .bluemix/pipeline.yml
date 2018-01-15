@@ -15,7 +15,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Blue-Green Deploy
+  - name: deploy-marbles-app
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}
@@ -26,19 +26,25 @@ stages:
       #!/bin/bash
 
       # Test Code
+      printf "\nListing services for testing"
       cf services
       #cf services | sed -n 's/.*\(ibm-blockchain-plan-v1-prod\).*/\1/p'
+      printf "\nTest"
       cf services | sed -n 's/.*\(davids-d2b-test\).*/\1/p'
 
       # Create a service, this is okay to run even if the service already exists, at least as of 01/12/2018
+      printf "\nCreating an instance of the IBM Blockchain Platform service"
       cf create-service cloudantNoSQLDB Lite davids-d2b-test
 
       # Push app (don't start yet, wait for binding)
+      printf "\nCreating the Marbles application"
       cf push $CF_APP --no-start
 
       # Bind app to the blockchain service
+      printf "\nBinding the IBM Blockchain Platform service to Marbles"
       cf bind-service $CF_APP davids-d2b-test -c "{\"permissions\":\"read-only\"}"
 
       # Start her up
+      printf "\nStarting Marbles"
       cf start $CF_APP
       #cf restage $CF_APP - this is not needed if we bind before starting
