@@ -39,7 +39,7 @@ stages:
         echo "A service instance name was provided, lets use that"
       else
         echo "A service instance name was NOT provided, lets use the default one"
-        export SERVICE_INSTANCE_NAME="davids-s2b-created"
+        export SERVICE_INSTANCE_NAME="davids-d2b-created"
       fi
       printf "Using service instance name '${SERVICE_INSTANCE_NAME}'\n"
 
