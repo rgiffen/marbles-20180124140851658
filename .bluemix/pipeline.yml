@@ -24,6 +24,8 @@ stages:
       application: ${CF_APP_NAME}
     script: |
       #!/bin/bash
+      export IBP_NAME="ibm-blockchain-5-dev"
+      export IBP_PLAN="ibm-blockchain-plan-v1-ga1-dev"
 
       # Test Code
       printf "\n --- Listing services for testing ---\n"
@@ -43,7 +45,7 @@ stages:
 
       # Create a service, this is okay to run even if the service already exists, at least as of 01/12/2018
       printf "\n --- Creating an instance of the IBM Blockchain Platform service ---\n"
-      cf create-service cloudantNoSQLDB Lite ${SERVICE_INSTANCE_NAME}
+      cf create-service ${IBP_NAME} ${IBP_PLAN} ${SERVICE_INSTANCE_NAME}
 
       # Push app (don't start yet, wait for binding)
       printf "\n --- Creating the Marbles application ---\n"
