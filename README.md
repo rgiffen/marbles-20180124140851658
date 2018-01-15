@@ -12,7 +12,7 @@
 
 [![Deploy To Bluemix](/.bluemix/create_marbles_tc_new_button.png)](https://console.stage1.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/dshuffma-ibm/marbles&branch=v4.0)
 
-[![Deploy To Bluemix](/.bluemix/create_marbles_tc_existing_button.png)](https://console.stage1.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/dshuffma-ibm/marbles&branch=v4.0&sin=davids-s2b-existing)
+[![Deploy To Bluemix](/.bluemix/create_marbles_tc_existing_button.png)](https://console.stage1.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/dshuffma-ibm/marbles&branch=v4.0&sin=davids-s2b-existing&redirect_uri=https%3A//github.com/dshuffma-ibm/marbles/blob/v4.0/README.md)
 
 ##### Versions and Supported Platforms
 Please note there are multiple version of marbles.
