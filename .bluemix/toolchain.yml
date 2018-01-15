@@ -47,7 +47,7 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
         execute: true
-  marbles-repo:
+  marbles-app:
     service_id: customtool
     parameters:
       type: 'Marbles'
