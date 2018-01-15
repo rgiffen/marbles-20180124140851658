@@ -8,14 +8,11 @@ stages:
   triggers:
   - type: commit
   properties:
-  - name: CF_APP_NAME
-    value: undefined
-    type: text
-  - name: APP_URL
-    value: undefined
-    type: text
   - name: SERVICE_INSTANCE_NAME
     value: '{{sin}}'
+    type: text
+  - name: SAMPLE_REPO
+    value: '{{SAMPLE_REPO}}'
     type: text
   jobs:
   - name: deploy-marbles-app
@@ -32,18 +29,17 @@ stages:
       printf "\n --- Listing services for testing ---\n"
       cf services
       #cf services | sed -n 's/.*\(ibm-blockchain-plan-v1-prod\).*/\1/p'
-      echo "Looking for 1 ${CF_APP}"
-      echo "Looking for 2 ${SERVICE_INSTANCE_NAME}"
-      cf services | sed -n 's/.*\(${SERVICE_INSTANCE_NAME}\).*/\1/p'
+      #cf services | sed -n 's/.*\(${SERVICE_INSTANCE_NAME}\).*/\1/p'
 
       # Detect if there is already a service we should use
+      printf "\n --- Detecting service option---\n"
       if [ "$SERVICE_INSTANCE_NAME" != "" ]; then
         echo "A service instance name was provided, lets use that"
       else
         echo "A service instance name was NOT provided, lets use the default one"
         export SERVICE_INSTANCE_NAME="davids-d2b-test"
       fi
-      printf "Using service instance name ${SERVICE_INSTANCE_NAME}\n"
+      printf "Using service instance name '${SERVICE_INSTANCE_NAME}'\n"
 
       # Create a service, this is okay to run even if the service already exists, at least as of 01/12/2018
       printf "\n --- Creating an instance of the IBM Blockchain Platform service ---\n"
