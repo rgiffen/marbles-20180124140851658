@@ -11,7 +11,7 @@
 ***
 
 [![Deploy To Bluemix](/.bluemix/create_marbles_tc_new_button.png)](https://console.stage1.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/dshuffma-ibm/marbles&branch=v4.0)
-or [![Deploy To Bluemix](/.bluemix/create_marbles_tc_existing_button.png)](https://console.stage1.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/dshuffma-ibm/marbles&branch=v4.0&sin=davids-s2b-existing&redirect_uri=https%3A//github.com/dshuffma-ibm/marbles/blob/v4.0/README.md)
+or [![Deploy To Bluemix](/.bluemix/create_marbles_tc_existing_button.png)](https://console.stage1.bluemix.net/devops/setup/deploy/?repository=https%3A//github.com/dshuffma-ibm/marbles&branch=v4.0&sin=davids-s2b-existing)
 
 ***
 
