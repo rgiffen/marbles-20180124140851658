@@ -9,20 +9,20 @@ template:
   header: '![](toolchain.png)'
   icon: icon.svg
   required:
-    - sample-build
-    - sample-repo
+    - marbles-build
+    - marbles-repo
   info:
     git url: >-
       [https://github.com/dshuffma-ibm/marbles](https://github.com/dshuffma-ibm/marbles)
     git branch: >-
-      [v4.10](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
+      [v4.11](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
 toolchain:
   name: 'marbles-tc-{{timestamp}}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
-  sample-repo:
+  marbles-repo:
     service_id: githubpublic
     parameters:
       repo_name: 'marbles-{{timestamp}}'
@@ -30,18 +30,18 @@ services:
       type: clone
       has_issues: false
       enable_traceability: true
-  sample-build:
+  marbles-build:
     service_id: pipeline
     parameters:
       services:
-        - sample-repo
-      name: '{{services.sample-repo.parameters.repo_name}}'
+        - marbles-repo
+      name: '{{services.marbles-repo.parameters.repo_name}}'
       ui-pipeline: true
       configuration:
         content:
           $text: pipeline.yml
         env:
-          SAMPLE_REPO: sample-repo
+          SAMPLE_REPO: marbles-repo
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -50,6 +50,6 @@ services:
 form:
   pipeline:
     parameters:
-      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
+      prod-app-name: '{{services.marbles-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
