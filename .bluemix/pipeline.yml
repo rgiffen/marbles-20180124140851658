@@ -29,8 +29,8 @@ stages:
       printf "\n --- Listing services for testing ---\n"
       cf services
       #cf services | sed -n 's/.*\(ibm-blockchain-plan-v1-prod\).*/\1/p'
-      printf "\n\nTest????\n"
-      cf services | sed -n 's/.*\(davids-d2b-test\).*/\1/p'
+      printf "\n\nLooking for $SERVICENAME\n"
+      cf services | sed -n 's/.*\(${SERVICENAME}\).*/\1/p'
 
       # Create a service, this is okay to run even if the service already exists, at least as of 01/12/2018
       printf "\n --- Creating an instance of the IBM Blockchain Platform service ---\n"
@@ -48,3 +48,5 @@ stages:
       printf "\n --- Starting Marbles ---\n"
       cf start $CF_APP
       #cf restage $CF_APP - this is not needed if we bind before starting
+
+      printf "\n\n --- We are done here. ---\n\n"
