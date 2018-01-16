@@ -65,5 +65,8 @@ form:
     schema:
       $ref: deploy.json
   customtool:
+    name: marbles1
+    parameters:
+      name: 'marbles1'
     schema:
       $ref: customtool-ui.json
