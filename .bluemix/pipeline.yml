@@ -62,6 +62,8 @@ stages:
 
       # Install and instantiate the chaincode
       printf "\n --- Setting up for deployment ---\n"
+      ls
+      export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
       npm install
       printf "\n --- Deploying Chaincode ---\n"
       node ./scripts/deploy_chaincode.js || true
