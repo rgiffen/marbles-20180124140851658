@@ -50,7 +50,7 @@ services:
   marbles-app:
     service_id: customtool
     parameters:
-      type: 'Marbles'
+      type: 'marbles1'
       lifecyclePhase: 'RUN'
       imageUrl: 'https://github.com/dshuffma-ibm/marbles/raw/v4.0/public/imgs/favicon-96.png'
       documentationUrl: 'https://{{form.pipeline.parameters.prod-app-name}}.stage1.mybluemix.net'

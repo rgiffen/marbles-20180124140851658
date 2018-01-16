@@ -14,10 +14,6 @@
 	},
 	"type": "object",
 	"properties": {
-		"type": {
-			"description": "type here",
-			"type": "string"
-		},
 		"lifecyclePhase": {
 			"description": "lifecyclePhase here",
 			"type": "string"
