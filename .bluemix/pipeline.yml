@@ -26,6 +26,7 @@ stages:
       #!/bin/bash
       export IBP_NAME="ibm-blockchain-5-dev"
       export IBP_PLAN="ibm-blockchain-plan-v1-ga1-dev"
+      export VCAP_KEY_NAME="marbles_tc_creds"
 
       # Test Code
       printf "\n --- Listing services for testing ---\n"
@@ -46,6 +47,12 @@ stages:
       # Create a service, this is okay to run if the service already exists as long as its the same typeof service
       printf "\n --- Creating an instance of the IBM Blockchain Platform service ---\n"
       cf create-service ${IBP_NAME} ${IBP_PLAN} ${SERVICE_INSTANCE_NAME}
+      cf create-service-key ${SERVICE_INSTANCE_NAME} ${VCAP_KEY_NAME}
+
+      # Get service credentials into our fs, (remove the first two lines from cf service-key output)
+      printf "\n --- Getting service credentials ---\n"
+      cf service-key ${SERVICE_INSTANCE_NAME} ${VCAP_KEY_NAME} > ./config/temp.txt
+      tail -n +2 ./config/temp.txt > ./config/marbles_tc.json
 
       # Push app (don't start yet, wait for binding)
       printf "\n --- Creating the Marbles application ---\n"
@@ -62,8 +69,8 @@ stages:
 
       # Install and instantiate the chaincode
       printf "\n --- Setting up for deployment ---\n"
-      ls
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
+      ls
       npm install
       printf "\n --- Deploying Chaincode ---\n"
       node ./scripts/deploy_chaincode.js || true
