@@ -15,7 +15,7 @@ template:
     git url: >-
       [https://github.com/dshuffma-ibm/marbles](https://github.com/dshuffma-ibm/marbles)
     git branch: >-
-      [v4.36](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
+      [v4.37](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
 toolchain:
   name: 'marbles-tc-{{timestamp}}'
   template:
@@ -54,10 +54,10 @@ services:
       lifecyclePhase: 'RUN'
       imageUrl: '{{form.customtool.parameters.imageUrl}}'
       documentationUrl: 'https://{{form.pipeline.parameters.prod-app-name}}.stage1.mybluemix.net'
-      name: 'Marbles2'
+      name: 'Node.js Applicaiton'
       dashboard_url: 'https://{{form.pipeline.parameters.prod-app-name}}.stage1.mybluemix.net/login'
-      description: 'description'
-      additional-properties: 'additional-properties'
+      description: 'This is your Marbles node.js application. You do not need to modify anything.'
+      additional-properties: ''
 form:
   pipeline:
     parameters:
