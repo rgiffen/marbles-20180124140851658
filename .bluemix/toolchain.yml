@@ -7,7 +7,7 @@ template:
   description:
     $ref: "#/messages/template.description"
   header: '![](toolchain.png)'
-  icon: icon.svg
+  icon: https://github.com/dshuffma-ibm/marbles/raw/v4.0/public/imgs/favicon-96.png
   required:
     - marbles-build
     - marbles-repo
@@ -15,7 +15,7 @@ template:
     git url: >-
       [https://github.com/dshuffma-ibm/marbles](https://github.com/dshuffma-ibm/marbles)
     git branch: >-
-      [v4.37](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
+      [v4.38](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
 toolchain:
   name: 'marbles-tc-{{timestamp}}'
   template:
