@@ -53,6 +53,10 @@ stages:
       printf "\n --- Getting service credentials ---\n"
       cf service-key ${SERVICE_INSTANCE_NAME} ${VCAP_KEY_NAME} > ./config/temp.txt
       tail -n +2 ./config/temp.txt > ./config/marbles_tc.json
+      printf "\n --- testing temp.txt --- \n"
+      cat ./config/temp.txt -b
+      printf "\n --- testing marbles_tc.json --- \n"
+      cat ./config/marbles_tc.json -b
 
       # Push app (don't start yet, wait for binding)
       printf "\n --- Creating the Marbles application ---\n"
