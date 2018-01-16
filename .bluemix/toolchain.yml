@@ -64,7 +64,7 @@ form:
       prod-app-name: '{{services.marbles-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
-   customtool:
+  customtool:
     parameters:
       prod-app-name: '{{services.marbles-repo.parameters.repo_name}}'
     schema:
