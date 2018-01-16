@@ -15,7 +15,7 @@ template:
     git url: >-
       [https://github.com/dshuffma-ibm/marbles](https://github.com/dshuffma-ibm/marbles)
     git branch: >-
-      [v4.27](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
+      [v4.28](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
 toolchain:
   name: 'marbles-tc-{{timestamp}}'
   template:
@@ -65,7 +65,6 @@ form:
     schema:
       $ref: deploy.json
   customtool:
-    service_id: marbles1
     type: 'marbles1'
     parameters:
       type: 'marbles1'
