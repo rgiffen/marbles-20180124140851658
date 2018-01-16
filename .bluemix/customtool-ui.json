@@ -54,7 +54,6 @@
 		},
 		{
 			"type": "text",
-			"readonly": true,
 			"title": {
 				"$ref": "#/messages/customtool.lifecyclePhase"
 			},
@@ -62,7 +61,6 @@
 		},
 		{
 			"type": "text",
-			"readonly": true,
 			"title": {
 				"$ref": "#/messages/customtool.imageUrl"
 			},
