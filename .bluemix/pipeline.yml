@@ -60,4 +60,10 @@ stages:
       cf start $CF_APP
       #cf restage $CF_APP - this is not needed if we bind before starting
 
+      # Install and instantiate the chaincode
+      printf "\n --- Setting up for deployment ---\n"
+      npm install
+      printf "\n --- Deploying Chaincode ---\n"
+      node ./scripts/deploy_chaincode.js || true
+
       printf "\n\n --- We are done here. ---\n\n"
