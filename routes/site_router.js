@@ -3,7 +3,7 @@
 /*******************************************************************************
  * Copyright (c) 2015 IBM Corp.
  *
- * All rights reserved. 
+ * All rights reserved.
  *
  *******************************************************************************/
 var express = require('express');
@@ -24,7 +24,7 @@ function build_bag(req) {
 
 //get cred data
 function get_credential_data() {
-	const channel = helper.getChannelId();
+	const channel = helper.getFirstChannelId();
 	const first_org = helper.getClientOrg();
 	const first_ca = helper.getFirstCaName(first_org);
 	const first_peer = helper.getFirstPeerName(channel);
@@ -36,7 +36,7 @@ function get_credential_data() {
 		ca: helper.getCasUrl(first_ca),
 		peer: helper.getPeersUrl(first_peer),
 		chaincode_id: helper.getChaincodeId(),
-		channel: helper.getChannelId(),
+		channel: helper.getFirstChannelId(),
 		chaincode_version: helper.getChaincodeVersion(),
 		marble_owners: helper.getMarbleUsernames(),
 	};

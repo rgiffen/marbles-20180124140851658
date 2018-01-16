@@ -17,7 +17,7 @@ var http = require('http');
 var app = express();
 var cors = require('cors');
 var async = require('async');
-var ws = require('ws');											//websocket module 
+var ws = require('ws');											//websocket module
 var winston = require('winston');								//logger module
 
 // --- Get Our Modules --- //
@@ -234,7 +234,7 @@ function setup_marbles_lib(cb) {
 	ws_server.setup(wss.broadcast, marbles_lib);
 
 	logger.debug('Checking if chaincode is already instantiated or not');
-	const channel = helper.getChannelId();
+	const channel = helper.getFirstChannelId();
 	const first_peer = helper.getFirstPeerName(channel);
 	var options = {
 		peer_urls: [helper.getPeersUrl(first_peer)],
@@ -248,7 +248,7 @@ function setup_marbles_lib(cb) {
 			broadcast_state('find_chaincode', 'failed');
 		}
 		else {													//else we already instantiated
-			console.log('\n----------------------------- Chaincode found on channel "' + helper.getChannelId() + '" -----------------------------\n');
+			console.log('\n----------------------------- Chaincode found on channel "' + helper.getFirstChannelId() + '" -----------------------------\n');
 
 			// --- Check Chaincode Compatibility  --- //
 			marbles_lib.check_version(options, function (err, resp) {
@@ -315,7 +315,7 @@ function create_assets(build_marbles_users) {
 
 				// --- Create Marbles--- //
 				setTimeout(function () {
-					async.each(marbles, function (owner_obj, marble_cb) { 			//iter through each one 
+					async.each(marbles, function (owner_obj, marble_cb) { 			//iter through each one
 						create_marbles(owner_obj.id, owner_obj.username, marble_cb);
 					}, function (err) {												//marble owner creation finished
 						logger.debug('- finished creating asset');
@@ -335,7 +335,7 @@ function create_assets(build_marbles_users) {
 
 // Create the marble owner
 function create_owners(attempt, username, cb) {
-	const channel = helper.getChannelId();
+	const channel = helper.getFirstChannelId();
 	const first_peer = helper.getFirstPeerName(channel);
 	var options = {
 		peer_urls: [helper.getPeersUrl(first_peer)],
@@ -359,7 +359,7 @@ function create_owners(attempt, username, cb) {
 // Create 1 marble
 function create_marbles(owner_id, username, cb) {
 	var randOptions = build_marble_options(owner_id, username, process.env.marble_company);
-	const channel = helper.getChannelId();
+	const channel = helper.getFirstChannelId();
 	const first_peer = helper.getFirstPeerName(channel);
 	console.log('');
 	logger.debug('[startup] going to create marble:', randOptions);

@@ -1,5 +1,5 @@
 // ==================================
-// Websocket Server Side Code 
+// Websocket Server Side Code
 // ==================================
 //var async = require('async');
 var path = require('path');
@@ -35,7 +35,7 @@ module.exports = function (g_options, fcw, logger) {
 
 	// process web socket messages
 	ws_server.process_msg = function (ws, data) {
-		const channel = helper.getChannelId();
+		const channel = helper.getFirstChannelId();
 		const first_peer = helper.getFirstPeerName(channel);
 		var options = {
 			peer_urls: [helper.getPeersUrl(first_peer)],
@@ -130,7 +130,7 @@ module.exports = function (g_options, fcw, logger) {
 			}
 		}
 
-		// send transaction error msg 
+		// send transaction error msg
 		function send_err(msg, input) {
 			sendMsg({ msg: 'tx_error', e: msg, input: input });
 			sendMsg({ msg: 'tx_step', state: 'committing_failed' });
@@ -228,7 +228,7 @@ module.exports = function (g_options, fcw, logger) {
 
 	// read complete state of marble world
 	function read_everything(ws_client, cb) {
-		const channel = helper.getChannelId();
+		const channel = helper.getFirstChannelId();
 		const first_peer = helper.getFirstPeerName(channel);
 		var options = {
 			peer_urls: [helper.getPeersUrl(first_peer)],
