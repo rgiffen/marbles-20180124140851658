@@ -15,7 +15,7 @@ template:
     git url: >-
       [https://github.com/dshuffma-ibm/marbles](https://github.com/dshuffma-ibm/marbles)
     git branch: >-
-      [v4.38](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
+      [v4.39](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
 toolchain:
   name: 'marbles-tc-{{timestamp}}'
   template:
@@ -37,10 +37,12 @@ services:
         - marbles-repo
       name: '{{services.marbles-repo.parameters.repo_name}}'
       ui-pipeline: true
+      sin: 'test'
       configuration:
         content:
           $text: pipeline.yml
         env:
+          SIN: 'testing'
           SAMPLE_REPO: marbles-repo
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
