@@ -15,7 +15,7 @@ template:
     git url: >-
       [https://github.com/dshuffma-ibm/marbles](https://github.com/dshuffma-ibm/marbles)
     git branch: >-
-      [v4.32](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
+      [v4.33](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
 toolchain:
   name: 'marbles-tc-{{timestamp}}'
   template:
@@ -51,7 +51,8 @@ services:
     service_id: customtool
     parameters:
       type: 'marbles1'
-      imageUrl: 'https://github.com/dshuffma-ibm/marbles/raw/v4.0/public/imgs/favicon-96.png'
+      lifecyclePhase: '{{form.customtool.parameters.lifecyclePhase}}'
+      imageUrl: '{{form.customtool_marbles1.parameters.imageUrl}}'
       documentationUrl: 'https://{{form.pipeline.parameters.prod-app-name}}.stage1.mybluemix.net'
       name: 'Marbles2'
       dashboard_url: 'https://{{form.pipeline.parameters.prod-app-name}}.stage1.mybluemix.net/login'
