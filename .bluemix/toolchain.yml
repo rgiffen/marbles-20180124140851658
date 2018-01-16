@@ -15,7 +15,7 @@ template:
     git url: >-
       [https://github.com/dshuffma-ibm/marbles](https://github.com/dshuffma-ibm/marbles)
     git branch: >-
-      [v4.16](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
+      [v4.17](https://github.com/dshuffma-ibm/marbles/tree/v4.0)
 toolchain:
   name: 'marbles-tc-{{timestamp}}'
   template:
@@ -48,9 +48,9 @@ services:
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
         execute: true
   marbles-app:
-    service_id: customtool2
+    service_id: customtool
     parameters:
-      type: 'Marbles'
+      type: 'customtool'
       lifecyclePhase: 'RUN'
       imageUrl: 'https://github.com/dshuffma-ibm/marbles/raw/v4.0/public/imgs/favicon-96.png'
       documentationUrl: 'https://{{form.pipeline.parameters.prod-app-name}}.stage1.mybluemix.net'
@@ -64,6 +64,6 @@ form:
       prod-app-name: '{{services.marbles-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
-  customtool2:
+  customtool:
     schema:
       $ref: customtool-ui.json
