@@ -55,11 +55,11 @@ services:
       type: 'Marbles'
       lifecyclePhase: 'RUN'
       imageUrl: 'https://github.com/dshuffma-ibm/marbles/raw/v4.0/public/imgs/favicon-36.png'
-      documentationUrl: 'https://{{form.pipeline.parameters.prod-app-name}}.stage1.mybluemix.net'
+      documentationUrl: 'https://github.com/dshuffma-ibm/marbles'
       name: 'Node.js Applicaiton'
       dashboard_url: 'https://{{form.pipeline.parameters.prod-app-name}}.stage1.mybluemix.net/login'
       description: 'This is your Marbles node.js application. You do not need to modify anything.'
-      additional-properties: ''
+      additional-properties: 'nope'
 form:
   pipeline:
     parameters:
